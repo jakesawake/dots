@@ -37,6 +37,7 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "eslint",
       },
     })
 
@@ -47,7 +48,7 @@ return {
         "isort", -- python formatter
         "black", -- python formatter
         "pylint",
-        "eslint_d",
+        "eslint",
       },
     })
   end,
