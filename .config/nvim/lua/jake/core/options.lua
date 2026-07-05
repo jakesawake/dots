@@ -34,3 +34,21 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split vertical window to the bottom
+
+-- autowriting
+-- opt.autowrite = true
+
+-- for writing all files uncomment the option below
+-- opt.autowriteall = true
+
+-- conceal markdown syntax (bold/italic markers, links) only in markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
+
+-- Create an augroup for managing autocommands
+local augroup = vim.api.nvim_create_augroup("AutoWriteGroup", { clear = true })
+
