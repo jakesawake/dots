@@ -22,8 +22,10 @@ return {
 
     local lspkind = require("lspkind")
 
-    -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    require("luasnip.loaders.from_vscode").lazy_load()
+    -- explicit path avoids a race condition where the first JS buffer is opened
+    -- before luasnip's filetype detection runs, causing snippets to miss that buffer
+    -- require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("data") .. "/lazy/friendly-snippets" } })
 
     cmp.setup({
       snippet = { -- configure how nvim-cmp interacts with snippet engine
