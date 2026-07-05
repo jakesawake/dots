@@ -55,6 +55,14 @@ return {
         theme = my_lualine_theme,
       },
       sections = {
+        lualine_c = {
+          { "filename" },
+          -- shows current file's position in the arrow pin list (e.g. → 2/4)
+          {
+            function() return require("arrow.statusline").text_for_statusline_with_icons() end,
+            color = { fg = colors.violet },
+          },
+        },
         lualine_x = {
           {
             lazy_status.updates,
