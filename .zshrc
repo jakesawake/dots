@@ -184,3 +184,8 @@ eval $(thefuck --alias fk)
 eval "$(zoxide init zsh)"
 
 alias cd="z"
+
+. "$HOME/.local/bin/env"
+
+
+
