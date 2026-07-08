@@ -41,11 +41,21 @@ opt.splitbelow = true -- split vertical window to the bottom
 -- for writing all files uncomment the option below
 -- opt.autowriteall = true
 
--- conceal markdown syntax (bold/italic markers, links) only in markdown files
+-- markdown-specific settings: conceal syntax markers, spell checking, and spell keymaps
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
     vim.opt_local.conceallevel = 2
+    vim.opt_local.spell = true        -- highlight misspelled words
+    vim.opt_local.spelllang = "en_us" -- use US English dictionary
+
+    local opts = { buffer = true }
+    -- <leader>ss toggle spell on/off, sn/sp jump between errors, sa add to dictionary, sf show fix suggestions
+    vim.keymap.set("n", "<leader>ss", "<cmd>setlocal spell!<CR>", vim.tbl_extend("force", opts, { desc = "Toggle spell check" }))
+    vim.keymap.set("n", "<leader>sn", "]s", vim.tbl_extend("force", opts, { desc = "Next misspelling" }))
+    vim.keymap.set("n", "<leader>sp", "[s", vim.tbl_extend("force", opts, { desc = "Prev misspelling" }))
+    vim.keymap.set("n", "<leader>sa", "zg", vim.tbl_extend("force", opts, { desc = "Add word to dictionary" }))
+    vim.keymap.set("n", "<leader>sf", "z=", vim.tbl_extend("force", opts, { desc = "Spell fix suggestions" }))
   end,
 })
 
