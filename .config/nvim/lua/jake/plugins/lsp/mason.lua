@@ -15,6 +15,7 @@ return {
         "prismals",
         "pyright",
         "eslint",
+        "marksman", -- markdown LSP: wiki link completion, go-to-definition on links
       },
     },
     dependencies = {
@@ -43,6 +44,7 @@ return {
         "black", -- python formatter
         "pylint",
         "eslint_d",
+        "markdownlint", -- markdown style linter (heading levels, trailing spaces, etc.)
       },
     },
     dependencies = {
