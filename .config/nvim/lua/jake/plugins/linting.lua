@@ -11,8 +11,11 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       python = { "pylint" },
-      markdown = { "markdownlint" }, -- flags style issues in markdown files
+      markdown = { "markdownlint" }, -- flags style issues in markdown files; MD013 (line length) disabled below
     }
+
+    -- disable MD013 (line length) — long lines are normal in Obsidian notes
+    lint.linters.markdownlint.args = { "--disable", "MD013", "--" }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
