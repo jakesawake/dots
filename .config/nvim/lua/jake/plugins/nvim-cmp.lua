@@ -27,6 +27,9 @@ return {
     -- require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("data") .. "/lazy/friendly-snippets" } })
 
+    -- disable completion in markdown — buffer scanning causes typing lag in large notes
+    cmp.setup.filetype("markdown", { enabled = false })
+
     cmp.setup({
       snippet = { -- configure how nvim-cmp interacts with snippet engine
         expand = function(args)
