@@ -1,3 +1,9 @@
+# auto-attach to tmux on terminal open; must be before p10k instant prompt
+# to avoid console output warnings during zsh initialization
+if [[ -z "$TMUX" ]]; then
+  tmux attach || tmux
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
