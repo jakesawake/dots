@@ -24,6 +24,15 @@ return {
     -- import nvim-cmp plugin (completions plugin)
     local cmp = require("cmp")
 
+    -- markdown-specific pairs (italic=_, bold=**, strikethrough, highlight)
+    local Rule = require("nvim-autopairs.rule")
+    autopairs.add_rules({
+      Rule("_", "_", "markdown"),
+      Rule("**", "**", "markdown"),
+      Rule("~~", "~~", "markdown"),
+      Rule("==", "==", "markdown"),
+    })
+
     -- make autopairs and completion work together
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
   end,
