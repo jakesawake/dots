@@ -7,7 +7,7 @@ return {
       enabled = true,
       trigger_events = { -- See :h events
         immediate_save = { "BufLeave", "FocusLost", "QuitPre", "VimSuspend" },
-        defer_save = { "InsertLeave", "TextChanged" },
+        defer_save = {},
         -- fixed typo: was cancel_defered_save (single r)
         cancel_deferred_save = { "InsertEnter" },
       },
